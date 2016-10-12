@@ -1,4 +1,7 @@
-# Teamcity EC2 Build Agent Setup
+# TeamCity EC2 Build Agent Setup
+
+Official Jetbrains TeamCity documentation can be found here:
+[Setting Up TeamCity for Amazon EC2](https://confluence.jetbrains.com/display/TCD9/Setting+Up+TeamCity+for+Amazon+EC2#SettingUpTeamCityforAmazonEC2-PreparingImagewithInstalledTeamCityAgent)
 
 ## Install applications:
 
@@ -9,11 +12,11 @@
 * [.NET Developer Packs](http://getdotnet.azurewebsites.net/target-dotnet-platforms.html)
 * FxCop (In Git this repository)
 * Visual Studio MSBuild Templates (In this Git repository)
-* Install Teamcity Build Agent (From Teamcity Web UI)
+* Install TeamCity Build Agent (From TeamCity Web UI)
 
 ## Configure Windows Firewall rule
 
-Open inbound port 9090 on Windows Firewall for Teamcity Build Agent
+Open inbound port 9090 on Windows Firewall for TeamCity Build Agent
 
 ## Extract MSBuild Templates
 
@@ -25,7 +28,7 @@ Extract VisualStudio.zip file to the following path:
 
 [Download Lets Encrypt Root Certificate](https://letsencrypt.org/certificates/) in .pem format
 
-### Teamcity
+### TeamCity
 
 Import certificate into TeamCity Agent JDK certificate store:
 `keytool -importcert -file <cert file> -keystore <path to JRE installation>/lib/security/cacerts`
@@ -42,3 +45,18 @@ Import certificate into TeamCity Agent JDK certificate store:
 ## EC2-specific Commands
 
 `sc config TCBuildAgent depend= EC2Config`
+
+## Prepare image
+
+* Ensure TeamCity Build Agent can communicate with TeamCity Server
+* Clean image with CCleaner
+* Open `C:\BuildAgent`
+* Copy `buildAgent.properties` file to make a backup
+* Start -> Run -> `services.msc`
+* Stop the TeamCity Build Agent
+* Delete `C:\BuildAgent\logs` directory
+* Delete `C:\BuildAgent\temp` directory
+* Edit `buildAgent.properties` file
+* Remove `name, serverUrl, authorizationToken` properties
+* Stop the TeamCity Build Agent and create an AMI
+* Add the AMI to TeamCity Agent Cloud configuration
