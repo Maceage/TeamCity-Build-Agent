@@ -1,5 +1,10 @@
 # TeamCity EC2 Build Agent Setup
 
+This repository contains all the resources, packages and information needed to create an AWS EC2 TeamCity Build Agent without installing Visual Studio
+
+Additional help available on the following StackOverflow thread:
+[Running Code Analysis (FxCop 12.0 / 14.0) on build agent without installing Visual Studio 2013 / 2015](http://stackoverflow.com/questions/21729066/running-code-analysis-fxcop-12-0-14-0-on-build-agent-without-installing-visu/32093939#32093939)
+
 Official Jetbrains TeamCity documentation can be found here:
 [Setting Up TeamCity for Amazon EC2](https://confluence.jetbrains.com/display/TCD9/Setting+Up+TeamCity+for+Amazon+EC2#SettingUpTeamCityforAmazonEC2-PreparingImagewithInstalledTeamCityAgent)
 
@@ -10,7 +15,6 @@ Official Jetbrains TeamCity documentation can be found here:
 * [Notepad++](https://notepad-plus-plus.org/)
 * [.NET Build Tools](https://www.microsoft.com/en-us/download/details.aspx?id=48159)
 * [.NET Developer Packs](http://getdotnet.azurewebsites.net/target-dotnet-platforms.html)
-* FxCop (In Git this repository)
 * Visual Studio MSBuild Templates (In this Git repository)
 * [Git](https://git-scm.com/download/win) (for client-side checkout
 * [Visual C++ Redistributable for Visual Studio 2015 x86](http://www.microsoft.com/en-us/download/confirmation.aspx?id=48145)
@@ -27,6 +31,16 @@ Open inbound port 9090 on Windows Firewall for TeamCity Build Agent
 Extract VisualStudio.zip file to the following path:
 
 `C:\Program Files (x86)\MSBuild\Microsoft`
+
+## Install FxCop
+
+* Run the FxCop installer (WinSDK_FxCopSetup.exe) from this repository
+* Using gacutil.exe register the following DLLs:
+  * Microsoft.VisualStudio.CodeAnalysis.dll
+  * Microsoft.VisualStudio.CodeAnalysis.Sdk.dll
+
+Command: `gacutil -i [path-to-dll]`
+Gacutil Location: `C:\Program Files\Microsoft SDKs\Windows\v[x]\bin`
 
 ## Import certificate
 
