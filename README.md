@@ -12,6 +12,7 @@ Official Jetbrains TeamCity documentation can be found here:
 * [.NET Developer Packs](http://getdotnet.azurewebsites.net/target-dotnet-platforms.html)
 * FxCop (In Git this repository)
 * Visual Studio MSBuild Templates (In this Git repository)
+* [Git](https://git-scm.com/download/win) (for client-side checkout
 * Install TeamCity Build Agent (From TeamCity Web UI)
 
 ## Configure Windows Firewall rule
