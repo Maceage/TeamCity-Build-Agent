@@ -13,6 +13,9 @@ Official Jetbrains TeamCity documentation can be found here:
 * FxCop (In Git this repository)
 * Visual Studio MSBuild Templates (In this Git repository)
 * [Git](https://git-scm.com/download/win) (for client-side checkout
+* [Visual C++ Redistributable for Visual Studio 2015 x86](http://www.microsoft.com/en-us/download/confirmation.aspx?id=48145)
+* [MSBuild Community Tasks](https://github.com/loresoft/msbuildtasks)
+* [Windows 10 SDK](https://dev.windows.com/en-us/downloads/windows-10-sdk)
 * Install TeamCity Build Agent (From TeamCity Web UI)
 
 ## Configure Windows Firewall rule
